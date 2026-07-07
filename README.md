@@ -13,6 +13,7 @@ This repository is where I record what I learn as I progress from **Hello World*
 | Day | Topic       | Status |
 | :-- | :---------- | :----: |
 | 01  | Hello World |    ✅   |
+| 02  | Comments |    ✅   |
 
 ---
 
