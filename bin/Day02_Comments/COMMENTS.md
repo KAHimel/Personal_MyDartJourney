@@ -43,7 +43,13 @@ void main() {
 Documentation comments start with `///` and are often used to describe a function, class, or library. They are especially helpful when writing public APIs.
 
 ```dart
-/// This is a documentation comment.
+void main() {
+  /// This is
+  /// a documentation
+  /// comment  
+  print("///This is a ");
+  print("/// documentation comment.");
+}
 ```
 
 In the attached example, the program uses all three comment styles, but the text inside the `print()` statements is what appears on the screen. The comments themselves are not executed.
