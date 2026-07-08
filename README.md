@@ -14,6 +14,8 @@ This repository is where I record what I learn as I progress from **Hello World*
 | :-- | :---------- | :----: |
 | 01  | Hello World |    ✅   |
 | 02  | Comments |    ✅   |
+| 03  | Variables |    ✅   |
+
 
 ---
 
