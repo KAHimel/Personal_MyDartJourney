@@ -12,10 +12,10 @@ This repository is where I record what I learn as I progress from **Hello World*
 
 | Day | Topic       | Status |
 | :-- | :---------- | :----: |
-| 01  | [Hello World](https://github.com/KAHimel/Personal_MyDartJourney/tree/main/bin/Day01_HelloWorld) |    ✅   |
+| 01  | [Hello World](https://github.com/KAHimel/Personal_MyDartJourney/tree/main/bin/Day01_HelloWorld) |  ✅   |
 | 02  | [Comments](https://github.com/KAHimel/Personal_MyDartJourney/tree/main/bin/Day02_Comments) |    ✅   |
 | 03  | [Variables](https://github.com/KAHimel/Personal_MyDartJourney/tree/main/bin/Day03_Variables) |    ✅   |
-| 04  | [Null safety]() |    Upcoming   |
+| 04  | [Null safety](https://github.com/KAHimel/Personal_MyDartJourney/tree/main/bin/Day04_NullSafety) |  ✅   |
 
 ---
 
