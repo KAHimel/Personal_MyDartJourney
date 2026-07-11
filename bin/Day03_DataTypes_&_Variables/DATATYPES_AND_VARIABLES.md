@@ -1,4 +1,4 @@
-# Day 03 — Variables
+# Day 03 — Data Types and Variables
 
 ## Objective
 
@@ -7,20 +7,261 @@
 - Explore const, final, static, and dynamic variables.
 - Apply variable naming conventions and best practices.
 
+## Files in this folder
+
+1. `data_types.dart` — basic data types like `int`, `double`, `String`, `bool`, `List`, `Set`, and `Map`
+2. `dynamic_variable.dart` — dynamic variables that can change type
+3. `final_variable.dart` — final variables that can only be assigned once
+4. `static_variable.dart` — static variables that belong to the class
+5. `const_variable.dart` — const variables that are fixed at compile time
+
+These files show the main variable ideas in a very small and simple way.
+
+---
+
+For each file below: code, a tiny line-by-line baby explanation, then a slightly broken version and the error you would see.
+
+### 1. `data_types.dart` — basic data types
+
+Code
+
+```dart
+void main() {
+  int age = 25;
+  print(age);
+
+  BigInt bigNumber = BigInt.parse('123456789012345678901234567890');
+  print(bigNumber);
+
+  double pi = 3.14159;
+  print(pi);
+
+  num number = 42;
+  num number2 = 3.14;
+  print(number);
+  print(number2);
+
+  String name = "Kowshik";
+  String name2 = "Himel";
+  print(name);
+  print(name2);
+
+  bool isStudent = true;
+  bool isEmployed = false;
+  print(isStudent);
+  print(isEmployed);
+}
+```
+
+Line-by-line (baby):
+- 1: I made a box for age and stored a whole number.
+- 2: I printed the number.
+- 3: I made a very big integer box.
+- 4: I printed the big number.
+- 5: I made a decimal number box.
+- 6: I printed the decimal.
+- 7: I made a number box that can be int or double.
+- 8: I made another one.
+- 9–10: I printed both numbers.
+- 11–12: I made text boxes.
+- 13–14: I printed the text.
+- 15–16: I made true/false boxes.
+- 17–18: I printed them.
+
+Broken tiny change:
+
+```dart
+void main() {
+  int age = "25"; // wrong: text inside an int box
+}
+```
+
+Error (what happens):
+- Compile-time error: `A value of type 'String' can't be assigned to a variable of type 'int'.`
+
+Run it with:
+
+```bash
+dart run "bin/Day03_DataTypes & Variables/data_types.dart"
+```
+
+---
+
+### 2. `dynamic_variable.dart` — dynamic values
+
+Code
+
+```dart
+void main() {
+  dynamic value = "The value of pi is approximately";
+  print(value);
+
+  value = 3.1416;
+  print(value);
+}
+```
+
+Line-by-line (baby):
+- 1: I made a box that can hold any type.
+- 2: I put text inside it and printed it.
+- 3: I changed the box to a number.
+- 4: I printed the new value.
+
+Broken tiny change:
+
+```dart
+void main() {
+  dynamic value = null;
+  print(value.length); // wrong: null has no length
+}
+```
+
+Error (what happens):
+- Runtime error: `NoSuchMethodError: The getter 'length' was called on null.`
+
+Run it with:
+
+```bash
+dart run "bin/Day03_DataTypes & Variables/dynamic_variable.dart"
+```
+
+---
+
+### 3. `final_variable.dart` — final once only
+
+Code
+
+```dart
+void main() {
+  final name = "Kowshik is";
+  final String msg = "Learning Dart";
+  print(name);
+  print(msg);
+}
+```
+
+Line-by-line (baby):
+- 1: I made a locked box called `name`.
+- 2: I made another locked box for a message.
+- 3: I printed the first box.
+- 4: I printed the second box.
+
+Broken tiny change:
+
+```dart
+void main() {
+  final name = "Kowshik";
+  name = "Himel"; // wrong: cannot change a final variable
+}
+```
+
+Error (what happens):
+- Compile-time error: `Cannot assign to final variable 'name'.`
+
+Run it with:
+
+```bash
+dart run "bin/Day03_DataTypes & Variables/final_variable.dart"
+```
+
+---
+
+### 4. `static_variable.dart` — shared class value
+
+Code
+
+```dart
+class Student {
+  static String university = "BAIUST";
+}
+
+void main() {
+  print(Student.university);
+}
+```
+
+Line-by-line (baby):
+- 1: I made a class called `Student`.
+- 2: I made a shared value for the whole class.
+- 3: I printed the shared value.
+
+Broken tiny change:
+
+```dart
+class Student {
+  static String university = "BAIUST";
+}
+
+void main() {
+  Student.university = 123; // wrong: type mismatch
+}
+```
+
+Error (what happens):
+- Compile-time error: `A value of type 'int' can't be assigned to a variable of type 'String'.`
+
+Run it with:
+
+```bash
+dart run "bin/Day03_DataTypes & Variables/static_variable.dart"
+```
+
+---
+
+### 5. `const_variable.dart` — fixed at compile time
+
+Code
+
+```dart
+void main() {
+  const appName = "MyApp";
+  const String appVersion = "1.0.0";
+  print(appName);
+  print(appVersion);
+}
+```
+
+Line-by-line (baby):
+- 1: I made a fixed box for the app name.
+- 2: I made another fixed box for the version.
+- 3: I printed the app name.
+- 4: I printed the version.
+
+Broken tiny change:
+
+```dart
+void main() {
+  const appName = "MyApp";
+  appName = "NewApp"; // wrong: cannot change a const variable
+}
+```
+
+Error (what happens):
+- Compile-time error: `Cannot assign to const variable 'appName'.`
+
+Run it with:
+
+```bash
+dart run "bin/Day03_DataTypes & Variables/const_variable.dart"
+```
+
+---
+
 ## Table of Contents
 
-1. [Explanation](#explanation)
-2. [Basic Data Types](#basic-data-types)
-3. [Static Variables](#static-variables)
-4. [Dynamic Variables](#dynamic-variables)
-5. [Final Variables](#final-variables)
-6. [Const Variables](#const-variables)
-7. [Comparison Table](#comparison-table)
-8. [Key Differences](#key-differences)
-9. [Best Practices](#best-practices)
-10. [Summary](#summary)
-11. [Practice Exercise](#practice-exercise)
-12. [Resources](#resources)
+1. [Files in this folder](#files-in-this-folder)
+2. [Explanation](#explanation)
+3. [Basic Data Types](#basic-data-types)
+4. [Static Variables](#static-variables)
+5. [Dynamic Variables](#dynamic-variables)
+6. [Final Variables](#final-variables)
+7. [Const Variables](#const-variables)
+8. [Comparison Table](#comparison-table)
+9. [Key Differences](#key-differences)
+10. [Best Practices](#best-practices)
+11. [Summary](#summary)
+12. [Practice Exercise](#practice-exercise)
+13. [Resources](#resources)
 
 ---
 
