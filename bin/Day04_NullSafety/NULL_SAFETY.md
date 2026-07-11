@@ -16,6 +16,11 @@
 5. `null_assertion_operator.dart` — null-assertion (`!`)
 6. `late.dart` — delayed initialization using `late`
 7. `late_final.dart` — delayed single-assignment using `late final`
+8. `cascade_operator.dart` — cascade notation (`..`)
+9. `null_aware_cascade.dart` — null-aware cascade (`?..`)
+10. `null_aware_spread_operator.dart` — null-aware spread (`...?...`)
+
+These files show the main null-safety ideas in a very small and simple way.
 
 ---
 
@@ -319,6 +324,150 @@ dart run bin/Day04_NullSafety/late_final.dart
 
 ---
 
+### 8. `cascade_operator.dart` — `..` (chain the work)
+
+Code
+
+```dart
+// use of (..)
+class Student {
+  String name = "";
+  int age = 0;
+}
+
+void main() {
+  Student student = Student()
+    ..name = "Himel"
+    ..age = 25;
+  print(student.name);
+  print(student.age);
+}
+```
+
+Line-by-line (baby):
+- 1: I made a student box.
+- 2: I used `..` to set the name and age in one smooth chain.
+- 3: I printed the name.
+- 4: I printed the age.
+
+Broken tiny change:
+
+```dart
+void main() {
+  Student? student = null;
+  student.name = "Himel"; // wrong: student can be null
+}
+```
+
+Error (what happens):
+- Compile-time analyzer error: the receiver can be `null`, so Dart stops you before running.
+
+Run it with:
+
+```bash
+dart run bin/Day04_NullSafety/cascade_operator.dart
+```
+
+---
+
+### 9. `null_aware_cascade.dart` — `?..` (only if not empty)
+
+Code
+
+```dart
+// use of (?..)
+class Student {
+  String name = "";
+
+  void greet() {
+    print("Hello, I am $name");
+  }
+}
+
+void main() {
+  Student? student = null;
+  student
+    ?..name = "Himel"
+    ..greet();
+
+  Student? student2 = Student();
+  student2
+    ?..name = "Himel"
+    ..greet();
+}
+```
+
+Line-by-line (baby):
+- 1: I made a student box that may be empty.
+- 2: I used `?..` to be safe and only change it if it exists.
+- 3: I tried to greet only when the student is really there.
+- 4: I made another student that is not empty.
+- 5: I used the safe cascade again and it worked.
+
+Broken tiny change:
+
+```dart
+void main() {
+  Student? student = null;
+  student..name = "Himel"; // wrong: no safe check
+}
+```
+
+Error (what happens):
+- Compile-time analyzer error: `?..` is needed when the receiver can be `null`.
+
+Run it with:
+
+```bash
+dart run bin/Day04_NullSafety/null_aware_cascade.dart
+```
+
+---
+
+### 10. `null_aware_spread_operator.dart` — `...?...` (add only if not empty)
+
+Code
+
+```dart
+//use of (...?)
+void main() {
+  List<int>? numbers = null;
+  List<int> result = [1, ...?numbers, 5];
+  print(result);
+
+  List<int>? numbers2 = [2, 3, 4];
+  List<int> result2 = [1, ...?numbers2, 5];
+  print(result2);
+}
+```
+
+Line-by-line (baby):
+- 1: I made a list that may be empty.
+- 2: I used `...?` to spread values only if the list really exists.
+- 3: I printed the result.
+- 4: I made another list that has values.
+- 5: I spread the values in and printed them.
+
+Broken tiny change:
+
+```dart
+void main() {
+  List<int>? numbers = null;
+  List<int> result = [1, ...numbers, 5]; // wrong: forgot the safe `?`
+}
+```
+
+Error (what happens):
+- Compile-time analyzer error: Dart wants the safe spread form when the list can be `null`.
+
+Run it with:
+
+```bash
+dart run bin/Day04_NullSafety/null_aware_spread_operator.dart
+```
+
+---
+
 ## Summary
 
 - `?` = box can be empty.
@@ -328,6 +477,9 @@ dart run bin/Day04_NullSafety/late_final.dart
 - `!` = I promise it's not empty (danger if wrong).
 - `late` = saved spot to fill later (must fill before use).
 - `late final` = fill once later, then locked.
+- `..` = chain many actions smoothly.
+- `?..` = do the chain only if the object is not null.
+- `...?` = spread values only if the list is not null.
 
 ---
 
