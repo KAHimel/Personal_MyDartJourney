@@ -13,6 +13,7 @@
 2. `loops.dart` — `for`, `while`, `do-while`, `for-in`, and `forEach`
 3. `loop_control.dart` — `break` and `continue`
 4. `switch_statements.dart` — `switch`
+5. `label.dart` — `break` and `continue`
 
 These files show the main control-flow ideas in a very small and simple way.
 
@@ -318,6 +319,77 @@ dart run bin/Day05_Control_Flow/switch_statements.dart
 
 ---
 
+### 5. `label.dart` — use labels with `break` and `continue`
+
+Code
+
+```dart 
+void main() {
+  // defining the label
+  Loop1:
+  for (int i = 0; i < 3; i++) {
+    if (i < 2) {
+      print("You are inside Loop1");
+
+      // breaking the label
+      break Loop1;
+    }
+    print("You are outside Loop1");
+  }
+
+  print("-------------------------");
+
+  Loop2:
+  for (int i = 0; i < 3; i++) {
+    if (i < 2) {
+      print("You are inside Loop2");
+
+      // continuing the label
+      continue Loop2;
+    }
+    print("You are outside Loop2");
+  }
+}
+```
+
+Line-by-line (baby):
+
+- 1: I gave the first loop a name called `Loop1`.
+- 2: The `for` loop starts.
+- 3: I check if `i` is less than `2`.
+- 4: If true, I print `"You are inside Loop1"`.
+- 5: `break Loop1` stops the entire loop immediately.
+- 6: The line after `break` is never reached for that iteration.
+- 7: I print a separator line.
+- 8: I gave the second loop a name called `Loop2`.
+- 9: The second `for` loop starts.
+- 10: I check if `i` is less than `2`.
+- 11: If true, I print `"You are inside Loop2"`.
+- 12: `continue Loop2` skips the rest of the current iteration and starts the next one.
+- 13: When `i` becomes `2`, the `if` is false, so `"You are outside Loop2"` is printed.
+
+Broken tiny change:
+
+```dart
+void main() {
+  Loop1:
+  for (int i = 0; i < 3; i++) {
+    if (i == 1) {
+      break Loop3;
+    }
+  }
+}
+```
+
+Error (what happens):
+- Compile-time error: Loop3 does not exist, so Dart reports an undefined label.
+
+Run it with:
+```bash 
+dart run bin/Day05_Control_Flow/label.dart
+```
+---
+
 ## Summary
 
 - `if` = make a choice.
@@ -328,3 +400,4 @@ dart run bin/Day05_Control_Flow/switch_statements.dart
 - `break` = stop the loop early.
 - `continue` = skip one step.
 - `switch` = choose one path from many options.
+- `label` = gives a loop or block a name.
