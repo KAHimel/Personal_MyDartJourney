@@ -17,6 +17,7 @@ This repository is where I record what I learn as I progress from **Hello World*
 | 03  | [Variables](https://github.com/KAHimel/Personal_MyDartJourney/tree/main/bin/Day03_Variables) |    ✅   |
 | 04  | [Null safety](https://github.com/KAHimel/Personal_MyDartJourney/tree/main/bin/Day04_NullSafety) |  ✅   |
 | 05  | [Control Flow](https://github.com/KAHimel/Personal_MyDartJourney/tree/main/bin/Day05_Control_Flow) |  ✅   |
+| 06  | [Functions](https://github.com/KAHimel/Personal_MyDartJourney/tree/main/bin/Day06_Functions) |  ✅   |
 
 ---
 
